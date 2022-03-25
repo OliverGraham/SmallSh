@@ -72,7 +72,7 @@ void initializeControlZHandler();
 /* Forks and executes commands. Prints status of background processes. */
 void otherCommands();
 
-/* Prints the exit status; the message depends on TODO.  */
+/* Prints the exit status with a corresponding message. */
 void printStatus();
 
 /* Redirects opened file using dup2().

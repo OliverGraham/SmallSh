@@ -18,7 +18,7 @@
 #include "smallsh.h"
 
 
-/* Global variables. I've preprended with g to denote their globality.
+/* Global variables. I've prepended with g to denote their globality.
 *  I spent days (and days) getting the majority of this working by passing pointers only.
 *  But it turned out to be having memory issues, so I reverted back to using these global variables.
 */
@@ -301,7 +301,6 @@ void handleControlZ(int signo) {
 	// toggle on/off
 	gForegroundOnly = !gForegroundOnly;
 
-	// TODO
 	// the regular display prompt
 	// seems to aid in output when running manually, adds extra : when running via script
 	char const prompt[] = ": ";
@@ -359,7 +358,7 @@ void handleRedirection() {
 	int redirectResult = 0;
 
 	// background commands (if < or > aren't specified) go to dev/null
-	// otherwise, they are redirected to the input/output files are specified
+	// otherwise, they are redirected to the input/output files as specified
 	if (inputFile == NULL && gCommand->isBackground) {
 
 		// attempt to open file as read-only
