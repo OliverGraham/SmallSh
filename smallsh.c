@@ -175,7 +175,7 @@ void createCommand(char* input, const char* pidAsString) {
 		// get length of string argument - considers variable expansion
 		int currentMaxLength = determineMaxLength(input, inputLength, pidLength, inputIndex);
 
-		// allocate memory, pricesly-sized 
+		// allocate memory, precisely-sized
 		allocateMemoryToCommand(argumentIndex, currentMaxLength);
 
 		// advances inputIndex in function
@@ -414,9 +414,12 @@ void initializeControlCHandler() {
 /* Initializes sigaction struct for ^Z (SIGSTP) */
 void initializeControlZHandler() {
 
-	gSignalActionSigStp.sa_handler = handleControlZ;	// attach function
+    // attach function
+	gSignalActionSigStp.sa_handler = handleControlZ;
 	sigfillset(&gSignalActionSigStp.sa_mask);
-	gSignalActionSigStp.sa_flags = SA_RESTART;			// returning from a handler resumes the function when this flag is set	
+
+	// returning from a handler resumes the function when this flag is set
+	gSignalActionSigStp.sa_flags = SA_RESTART;
 	sigaction(SIGTSTP, &gSignalActionSigStp, NULL);
 }
 
@@ -492,7 +495,7 @@ int redirectFile(int fileDescriptor, char* fileName, char* fileType, int redirec
 	return fcntl(fileDescriptor, F_SETFD, FD_CLOEXEC);
 }
 
-/* Initializes structs and other variables and runs continous loop to obtain user input and execute commands.
+/* Initializes structs and other variables, and runs continuous loop to obtain user input and execute commands.
 *  Exits only when user types appropriate command.
 */
 int main(void) {	
